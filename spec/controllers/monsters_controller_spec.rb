@@ -23,13 +23,13 @@ RSpec.describe MonstersController, type: :controller do
     end
 
     context 'User has killed 99 monsters' do
-      before do
+      let!(:monsters) {
         FactoryBot.create_list(
           :killed_monster, 99,
           user: user,
           monster: monster
         )
-      end
+      }
 
       it 'user retains the "Monster Killer 1 badge"' do
         expect {

@@ -47,8 +47,7 @@ module Merit
 
       grant_on 'monsters#kill', badge: 'Monster killer 1'
       grant_on 'monsters#kill', badge: 'Monster killer 2' do |monster|
-        killer = KilledMonster.last.user
-        KilledMonster.where(user: killer).where(monster: monster).count == 100
+        KilledMonster.last.user.killed_amount(monster: monster) == 100
       end
     end
   end

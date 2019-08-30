@@ -5,4 +5,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def killed_amount(monster:)
+    KilledMonster
+      .with_user(self)
+      .with_monster(monster)
+      .count
+  end
 end
