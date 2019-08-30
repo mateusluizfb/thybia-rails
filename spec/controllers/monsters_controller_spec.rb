@@ -15,14 +15,33 @@ RSpec.describe MonstersController, type: :controller do
     end
 
     context 'User has killed 0 monsters' do
-      it "User gains a 'beginner' badge" do
+      it "User gains a 'Monster killer 1' trophy" do
         expect {
           subject
-        }.to change { user.reload.badges.count }.from(0).to(1)
+        }.to change { user.reload.badges.last&.name }.to('Monster killer 1')
       end
     end
 
     context 'User has killed 99 monsters' do
+      before do
+        FactoryBot.create_list(
+          :killed_monster, 99,
+          user: user,
+          monster: monster
+        )
+      end
+
+      it 'user retains the "Monster Killer 1 badge"' do
+        expect {
+          subject
+        }.to change { user.reload.badges.first&.name }.to('Monster killer 1')
+      end
+
+      it 'user gains a "Monster killer 2" badge' do
+        expect {
+          subject
+        }.to change { user.reload.badges.last&.name }.to('Monster killer 2')
+      end
     end
 
     context 'User has killed 999 monsters' do

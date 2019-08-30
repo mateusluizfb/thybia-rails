@@ -37,3 +37,9 @@ Merit::Badge.create!(
   name: "Monster killer 1",
   description: "Level 1 monster"
 )
+
+Merit::Badge.create!(
+  id: 2,
+  name: "Monster killer 2",
+  description: "Level 2 monster"
+)
