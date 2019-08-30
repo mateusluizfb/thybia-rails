@@ -44,6 +44,8 @@ module Merit
       #
       #   user.name.length > 4
       # end
+
+      grant_on 'monsters#kill', badge: 'Monster killer 1'
     end
   end
 end
