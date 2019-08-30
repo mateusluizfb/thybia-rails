@@ -31,13 +31,13 @@ RSpec.describe MonstersController, type: :controller do
         )
       }
 
-      it 'user retains the "Monster Killer 1 badge"' do
+      it 'user retains the "Monster Killer 1 trophy"' do
         expect {
           subject
         }.to change { user.reload.badges.first&.name }.to('Monster killer 1')
       end
 
-      it 'user gains a "Monster killer 2" badge' do
+      it 'user gains a "Monster killer 2" trophy' do
         expect {
           subject
         }.to change { user.reload.badges.last&.name }.to('Monster killer 2')
@@ -45,6 +45,31 @@ RSpec.describe MonstersController, type: :controller do
     end
 
     context 'User has killed 999 monsters' do
+      let!(:monsters) {
+        FactoryBot.create_list(
+          :killed_monster, 999,
+          user: user,
+          monster: monster
+        )
+      }
+
+      it 'user retains the "Monster Killer 1 trophy"' do
+        expect {
+          subject
+        }.to change { user.reload.badges.first&.name }.to('Monster killer 1')
+      end
+
+      it 'user retains the "Monster killer 2" trophy' do
+        expect {
+          subject
+        }.to change { user.reload.badges[1]&.name }.to('Monster killer 2')
+      end
+
+      it 'user gains a "Monster killer 3" trophy' do
+        expect {
+          subject
+        }.to change { user.reload.badges.last&.name }.to('Monster killer 3')
+      end
     end
 
     context 'User has killed 9.999 monsters' do
