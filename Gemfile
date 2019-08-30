@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop'
   gem 'dotenv-rails'
+  gem 'factory_bot'
 end
 
 group :development do
