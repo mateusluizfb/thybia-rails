@@ -1,9 +1,9 @@
-class MonstersController < ApplicationController
+class KilledMonstersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_monster
 
   def kill
-    KilledMonster.create(user: current_user, monster: @monster)
+    @killed_monster = KilledMonster.create(user: current_user, monster: @monster)
   end
 
   private

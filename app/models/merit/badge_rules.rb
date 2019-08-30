@@ -45,12 +45,12 @@ module Merit
       #   user.name.length > 4
       # end
 
-      grant_on 'monsters#kill', badge: 'Monster killer 1'
-      grant_on 'monsters#kill', badge: 'Monster killer 2' do |monster|
-        KilledMonster.last.user.killed_amount(monster: monster) >= 100
+      grant_on 'killed_monsters#kill', badge: 'Monster killer 1'
+      grant_on 'killed_monsters#kill', badge: 'Monster killer 2' do |killed_monster|
+        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 100
       end
-      grant_on 'monsters#kill', badge: 'Monster killer 3' do |monster|
-        KilledMonster.last.user.killed_amount(monster: monster) >= 100
+      grant_on 'killed_monsters#kill', badge: 'Monster killer 3' do |killed_monster|
+        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 1000
       end
     end
   end

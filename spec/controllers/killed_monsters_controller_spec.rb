@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MonstersController, type: :controller do
+RSpec.describe KilledMonstersController, type: :controller do
   describe 'POST #kill' do
     let(:user) { FactoryBot.create :user }
     let(:monster) { FactoryBot.create :monster }
