@@ -21,10 +21,11 @@ module Merit
     include Merit::BadgeRulesMethods
 
     def initialize
-      register_monster_killer_trohpies
+      register_monster_killer_trophies
+      register_deaths_trophies
     end
 
-    def register_monster_killer_trohpies # rubocop:disable Metrics/AbcSize
+    def register_monster_killer_trophies # rubocop:disable Metrics/AbcSize
       grant_on 'killed_monsters#kill', badge: 'Monster killer 1'
       grant_on 'killed_monsters#kill', badge: 'Monster killer 2' do |killed_monster|
         killed_monster.user.killed_amount(monster: killed_monster.monster) >= 100
@@ -38,6 +39,10 @@ module Merit
       grant_on 'killed_monsters#kill', badge: 'Monster killer 5' do |killed_monster|
         killed_monster.user.killed_amount(monster: killed_monster.monster) >= 100_000
       end
+    end
+
+    def register_deaths_trophies
+      grant_on 'users#death', badge: 'Deaths 1'
     end
   end
 end
