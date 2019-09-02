@@ -93,7 +93,7 @@ RSpec.describe KilledMonstersController, type: :controller do
         }.to change { user.reload.badges[1]&.name }.to('Monster killer 2')
       end
 
-      it 'user retains a "Monster killer 3" trophy' do
+      it 'user retains the "Monster killer 3" trophy' do
         expect {
           subject
         }.to change { user.reload.badges[2]&.name }.to('Monster killer 3')
@@ -127,13 +127,13 @@ RSpec.describe KilledMonstersController, type: :controller do
         }.to change { user.reload.badges[1]&.name }.to('Monster killer 2')
       end
 
-      it 'user retains a "Monster killer 3" trophy' do
+      it 'user retains the "Monster killer 3" trophy' do
         expect {
           subject
         }.to change { user.reload.badges[2]&.name }.to('Monster killer 3')
       end
 
-      it 'user retains a "Monster killer 4" trophy' do
+      it 'user retains the "Monster killer 4" trophy' do
         expect {
           subject
         }.to change { user.reload.badges[3]&.name }.to('Monster killer 4')
