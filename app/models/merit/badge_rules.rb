@@ -52,6 +52,9 @@ module Merit
       grant_on 'killed_monsters#kill', badge: 'Monster killer 3' do |killed_monster|
         killed_monster.user.killed_amount(monster: killed_monster.monster) >= 1000
       end
+      grant_on 'killed_monsters#kill', badge: 'Monster killer 4' do |killed_monster|
+        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 10_000
+      end
     end
   end
 end
