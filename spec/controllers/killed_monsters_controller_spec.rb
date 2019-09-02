@@ -73,12 +73,9 @@ RSpec.describe KilledMonstersController, type: :controller do
     end
 
     context 'User has killed 9.999 monsters' do
-      let!(:monsters) {
-        FactoryBot.create_list(
-          :killed_monster, 9999,
-          user: user,
-          monster: monster
-        )
+      let!(:deaths) {
+        allow_any_instance_of(User).to receive(:killed_amount)
+          .and_return(10000)
       }
 
       it 'user retains the "Monster Killer 1 trophy"' do
@@ -107,12 +104,9 @@ RSpec.describe KilledMonstersController, type: :controller do
     end
 
     context 'User has killed 99.999 monsters' do
-      let!(:monsters) {
-        FactoryBot.create_list(
-          :killed_monster, 99999,
-          user: user,
-          monster: monster
-        )
+      let!(:deaths) {
+        allow_any_instance_of(User).to receive(:killed_amount)
+          .and_return(100_000)
       }
 
       it 'user retains the "Monster Killer 1 trophy"' do
