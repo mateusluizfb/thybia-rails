@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :deaths
+
   def killed_amount(monster:)
     KilledMonster
       .with_user(self)

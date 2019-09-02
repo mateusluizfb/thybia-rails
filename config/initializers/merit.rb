@@ -67,3 +67,9 @@ Merit::Badge.create!(
   name: "Deaths 1",
   description: "Level 1 deaths"
 )
+
+Merit::Badge.create!(
+  id: 7,
+  name: "Deaths 2",
+  description: "Level 2 deaths"
+)

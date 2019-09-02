@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class DeathsController < ApplicationController
   before_action :authenticate_user!
 
   def death
