@@ -23,6 +23,7 @@ module Merit
     def initialize
       register_deaths_trophies
       register_monster_killer_trophies
+      register_collected_coins_trophies
     end
 
     def register_monster_killer_trophies # rubocop:disable Metrics/AbcSize
@@ -55,6 +56,10 @@ module Merit
       grant_on 'deaths#create', badge: 'Deaths 5' do |death|
         death.user.deaths.count >= 100_000
       end
+    end
+
+    def register_collected_coins_trophies # rubocop:disable Metrics/AbcSize
+      grant_on 'collected_coins#create', badge: 'Coins 1'
     end
   end
 end

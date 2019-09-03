@@ -12,5 +12,13 @@ RSpec.describe CollectedCoinsController, type: :controller do
         subject
       }.to change { CollectedCoin.count }.from(0).to(1)
     end
+
+    context 'User has collected 0 coins' do
+      it "User gains a 'Coins 1' trophy" do
+        expect {
+          subject
+        }.to change { user.reload.badges.last&.name }.to('Coins 1')
+      end
+    end
   end
 end
