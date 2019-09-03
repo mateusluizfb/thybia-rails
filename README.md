@@ -10,4 +10,5 @@ Before start, create an `.env` file in the root and make sure to set those envir
   DB_USER=''
   DB_PASSWORD=''
   DB_HOST=''
+  DEVISE_SECRET=''
 ```
