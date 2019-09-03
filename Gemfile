@@ -42,6 +42,13 @@ gem 'devise'
 # For the trophy handling
 gem 'merit'
 
+# Bootstrap gem
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+
+# Enables the use of import
+gem 'activerecord-import'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,6 +56,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'dotenv-rails'
   gem 'factory_bot'
+  gem 'rails-controller-testing'
 end
 
 group :development do

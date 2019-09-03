@@ -6,5 +6,7 @@ class CollectedCoinsController < ApplicationController
       user:  current_user,
       value: params[:value]
     )
+
+    redirect_to users_path
   end
 end

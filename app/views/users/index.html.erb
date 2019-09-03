@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <h2>
+      Coletáveis
+    </h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Moedas coletadas</th>
+          <th scope="col">Mortes</th>
+          <th scope="col">Monstros mortos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @collected_coins %></td>
+          <td><%= @deaths %></td>
+          <td><%= @monsters_killed %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= form_tag '/collected_coins', method: :post do %>
+                <%= text_field_tag 'value', nil, placeholder: 'Moedas'%>
+                <%= submit_tag 'Coletar moedas' %>
+            <% end %>
+          </td>
+          <td>
+            <%= form_tag '/deaths', method: :post do %>
+              <%= text_field_tag 'count', nil, placeholder: 'Mortes'%>
+              <%= submit_tag 'Contar mortes' %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <h2>
+      Monstros mortos
+    </h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome do monstro</th>
+          <th scope="col">Quantos mortos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @monsters.each do |monster| %>
+          <tr>
+            <td> <%= monster.name %> </td>
+            <td> <%= current_user.killed_amount(monster) %> </td>
+            <td>
+              <%= form_tag "/killed_monsters/kill/#{monster.id}", method: :post do %>
+                <%= text_field_tag 'count', nil, placeholder: 'Quantidade'%>
+                <%= submit_tag 'Matar monstro' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <h2>
+      Troféus
+    </h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome do troféu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_user.badges.each do |badge| %>
+        <tr>
+          <td>
+            <%= badge.name %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   devise_scope :user do
-    root to: "devise/sessions#new"
+    root to: "users#index"
   end
 
   devise_for :users
 
   resources :deaths
   resources :collected_coins
+  resources :users
 
   resources :killed_monsters do
     collection do

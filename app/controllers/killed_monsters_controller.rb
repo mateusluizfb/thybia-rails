@@ -3,7 +3,14 @@ class KilledMonstersController < ApplicationController
   before_action :set_monster
 
   def kill
-    @killed_monster = KilledMonster.create(user: current_user, monster: @monster)
+    killed_monsters = Array.new(params[:count].to_i) do
+      KilledMonster.new(user: current_user, monster: @monster)
+    end
+    KilledMonster.import killed_monsters
+
+    current_user.grant_monster_badge(@monster)
+    @killed_monster = killed_monsters.first
+    redirect_to users_path
   end
 
   private

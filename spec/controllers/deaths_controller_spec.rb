@@ -5,7 +5,7 @@ RSpec.describe DeathsController, type: :controller do
     let(:user) { FactoryBot.create :user }
     before(:each) { sign_in(user) }
 
-    subject { post :create }
+    subject { post :create, params: { count: 1 } }
 
     it 'creates a new record' do
       expect {

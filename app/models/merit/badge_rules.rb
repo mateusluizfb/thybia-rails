@@ -29,16 +29,16 @@ module Merit
     def register_monster_killer_trophies # rubocop:disable Metrics/AbcSize
       grant_on 'killed_monsters#kill', badge: 'Monster killer 1'
       grant_on 'killed_monsters#kill', badge: 'Monster killer 2' do |killed_monster|
-        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 100
+        killed_monster.user.killed_amount(killed_monster.monster) >= 100
       end
       grant_on 'killed_monsters#kill', badge: 'Monster killer 3' do |killed_monster|
-        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 1000
+        killed_monster.user.killed_amount(killed_monster.monster) >= 1000
       end
       grant_on 'killed_monsters#kill', badge: 'Monster killer 4' do |killed_monster|
-        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 10_000
+        killed_monster.user.killed_amount(killed_monster.monster) >= 10_000
       end
       grant_on 'killed_monsters#kill', badge: 'Monster killer 5' do |killed_monster|
-        killed_monster.user.killed_amount(monster: killed_monster.monster) >= 100_000
+        killed_monster.user.killed_amount(killed_monster.monster) >= 100_000
       end
     end
 

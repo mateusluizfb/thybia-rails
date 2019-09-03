@@ -6,7 +6,7 @@ RSpec.describe KilledMonstersController, type: :controller do
     let(:monster) { FactoryBot.create :monster }
     before(:each) { sign_in(user) }
 
-    subject { post :kill, params: { monster_id: monster.id } }
+    subject { post :kill, params: { monster_id: monster.id, count: 1 } }
 
     it 'creates a new record' do
       expect {
