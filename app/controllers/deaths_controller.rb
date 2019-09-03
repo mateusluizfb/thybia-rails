@@ -2,7 +2,7 @@ class DeathsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    (params[:value].to_i || 1).times do
+    params[:count].to_i.times do
       @death = Death.create user: current_user
     end
 

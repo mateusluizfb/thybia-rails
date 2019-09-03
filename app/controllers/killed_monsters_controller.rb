@@ -3,7 +3,9 @@ class KilledMonstersController < ApplicationController
   before_action :set_monster
 
   def kill
-    @killed_monster = KilledMonster.create(user: current_user, monster: @monster)
+    params[:count].to_i.times do
+      @killed_monster = KilledMonster.create(user: current_user, monster: @monster)
+    end
 
     redirect_to users_path
   end
