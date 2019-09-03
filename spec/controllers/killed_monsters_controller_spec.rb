@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe KilledMonstersController, type: :controller do
   describe 'POST #kill' do
     let(:user) { FactoryBot.create :user }
-    let(:monster) { FactoryBot.create :monster }
+    let(:monster) { FactoryBot.create :monster, name: 'Monster' }
     before(:each) { sign_in(user) }
 
     subject { post :kill, params: { monster_id: monster.id, count: 1 } }
