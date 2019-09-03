@@ -5,15 +5,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :deaths
+
   resources :killed_monsters do
     collection do
       post 'kill/:monster_id', to: 'killed_monsters#kill'
-    end
-  end
-
-  resources :deaths do
-    collection do
-      post :death, to: 'deaths#death'
     end
   end
 

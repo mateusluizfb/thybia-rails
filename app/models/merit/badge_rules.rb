@@ -42,17 +42,17 @@ module Merit
     end
 
     def register_deaths_trophies # rubocop:disable Metrics/AbcSize
-      grant_on 'deaths#death', badge: 'Deaths 1'
-      grant_on 'deaths#death', badge: 'Deaths 2' do |death|
+      grant_on 'deaths#create', badge: 'Deaths 1'
+      grant_on 'deaths#create', badge: 'Deaths 2' do |death|
         death.user.deaths.count >= 100
       end
-      grant_on 'deaths#death', badge: 'Deaths 3' do |death|
+      grant_on 'deaths#create', badge: 'Deaths 3' do |death|
         death.user.deaths.count >= 1000
       end
-      grant_on 'deaths#death', badge: 'Deaths 4' do |death|
+      grant_on 'deaths#create', badge: 'Deaths 4' do |death|
         death.user.deaths.count >= 10_000
       end
-      grant_on 'deaths#death', badge: 'Deaths 5' do |death|
+      grant_on 'deaths#create', badge: 'Deaths 5' do |death|
         death.user.deaths.count >= 100_000
       end
     end

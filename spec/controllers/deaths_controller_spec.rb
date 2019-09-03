@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe DeathsController, type: :controller do
-  describe 'POST #death' do
+  describe 'POST #create' do
     let(:user) { FactoryBot.create :user }
     before(:each) { sign_in(user) }
 
-    subject { post :death }
+    subject { post :create }
 
     it 'creates a new record' do
       expect {

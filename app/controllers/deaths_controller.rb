@@ -1,7 +1,7 @@
 class DeathsController < ApplicationController
   before_action :authenticate_user!
 
-  def death
+  def create
     @death = Death.create user: current_user
   end
 end
