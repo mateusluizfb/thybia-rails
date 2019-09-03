@@ -1,24 +1,13 @@
-# README
+# Project Settings
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby Version: 2.5.1
+- Database: Postgres
+- Trophy system created using the [Merit gem](https://github.com/merit-gem/merit)
 
-Things you may want to cover:
+Before start, create an `.env` file in the root and make sure to set those environment variables:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+  DB_USER=''
+  DB_PASSWORD=''
+  DB_HOST=''
+```
