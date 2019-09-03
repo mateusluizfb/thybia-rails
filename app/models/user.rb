@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :deaths
+  has_many :collected_coins
 
   def killed_amount(monster:)
     KilledMonster

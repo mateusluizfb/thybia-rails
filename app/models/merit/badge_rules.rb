@@ -60,6 +60,9 @@ module Merit
 
     def register_collected_coins_trophies # rubocop:disable Metrics/AbcSize
       grant_on 'collected_coins#create', badge: 'Coins 1'
+      grant_on 'collected_coins#create', badge: 'Coins 2' do |collected_coin|
+        collected_coin.user.collected_coins.sum(:value) >= 100
+      end
     end
   end
 end
