@@ -18,10 +18,26 @@ class User < ApplicationRecord
   end
 
   def grant_monster_badge(monster) # rubocop:disable Metrics/AbcSize
-    add_badge(monster.badge(1).id)
-    add_badge(monster.badge(2).id) if killed_amount(monster) >= 100
-    add_badge(monster.badge(3).id) if killed_amount(monster) >= 1000
-    add_badge(monster.badge(4).id) if killed_amount(monster) >= 10_000
-    add_badge(monster.badge(5).id) if killed_amount(monster) >= 100_000
+    add_badge(monster.badge(1).id) if valid_for_badge?(monster, 0)
+    add_badge(monster.badge(2).id) if valid_for_badge?(monster, 100)
+    add_badge(monster.badge(3).id) if valid_for_badge?(monster, 1000)
+    add_badge(monster.badge(4).id) if valid_for_badge?(monster, 10_000)
+    add_badge(monster.badge(5).id) if valid_for_badge?(monster, 100_000)
+  end
+
+  def valid_for_badge?(monster, count)
+    index = {
+      0       => 1,
+      100     => 2,
+      1000    => 3,
+      10_000  => 4,
+      100_000 => 5
+    }[count]
+
+    !badge?(monster, index) && killed_amount(monster) >= count
+  end
+
+  def badge?(monster, index)
+    badges.select {|b| b.name == "#{monster.name} killer #{index}" }.present?
   end
 end
