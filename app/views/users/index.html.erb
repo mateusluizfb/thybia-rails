@@ -19,14 +19,16 @@
         </tr>
         <tr>
           <td>
-            <button type="button" name="collect-coin-button">
-              Coletar moeda
-            </button>
+            <%= form_tag '/collected_coins', method: :post do %>
+                <%= text_field_tag 'value', nil, placeholder: 'Moedas'%>
+                <%= submit_tag 'Coletar moedas' %>
+            <% end %>
           </td>
           <td>
-            <button type="button" name="death-coin-button">
-              Contar morte
-            </button>
+            <%= form_tag '/deaths', method: :post do %>
+              <%= text_field_tag 'value', nil, placeholder: 'Mortes'%>
+              <%= submit_tag 'Contar mortes' %>
+            <% end %>
           </td>
         </tr>
       </tbody>
@@ -50,9 +52,10 @@
             <td> <%= monster.name %> </td>
             <td> <%= current_user.killed_amount(monster: monster) %> </td>
             <td>
-              <button type="button" name="kill-button" class="">
-                Matar monstro
-              </button>
+              <%= form_tag '/killed_monsters', method: :post do %>
+                <%= text_field_tag 'value', nil, placeholder: 'Quantidade'%>
+                <%= submit_tag 'Matar monstro' %>
+              <% end %>
             </td>
           </tr>
         <% end %>
