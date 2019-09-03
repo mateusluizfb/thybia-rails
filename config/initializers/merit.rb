@@ -19,19 +19,6 @@ Merit.setup do |config|
   config.current_user_method = 'current_user'
 end
 
-# Create application badges (uses https://github.com/norman/ambry)
-# badge_id = 0
-# [{
-#   id: (badge_id = badge_id+1),
-#   name: 'just-registered'
-# }, {
-#   id: (badge_id = badge_id+1),
-#   name: 'best-unicorn',
-#   custom_fields: { category: 'fantasy' }
-# }].each do |attrs|
-#   Merit::Badge.create! attrs
-# end
-
 Merit::Badge.create!(
   id: 1,
   name: "Monster killer 1",
@@ -102,4 +89,22 @@ Merit::Badge.create!(
   id: 12,
   name: "Coins 2",
   description: "Level 2 coins"
+)
+
+Merit::Badge.create!(
+  id: 13,
+  name: "Coins 3",
+  description: "Level 3 coins"
+)
+
+Merit::Badge.create!(
+  id: 14,
+  name: "Coins 4",
+  description: "Level 4 coins"
+)
+
+Merit::Badge.create!(
+  id: 15,
+  name: "Coins 5",
+  description: "Level 5 coins"
 )

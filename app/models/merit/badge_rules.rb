@@ -63,6 +63,15 @@ module Merit
       grant_on 'collected_coins#create', badge: 'Coins 2' do |collected_coin|
         collected_coin.user.collected_coins.sum(:value) >= 100
       end
+      grant_on 'collected_coins#create', badge: 'Coins 3' do |collected_coin|
+        collected_coin.user.collected_coins.sum(:value) >= 1000
+      end
+      grant_on 'collected_coins#create', badge: 'Coins 4' do |collected_coin|
+        collected_coin.user.collected_coins.sum(:value) >= 10_000
+      end
+      grant_on 'collected_coins#create', badge: 'Coins 5' do |collected_coin|
+        collected_coin.user.collected_coins.sum(:value) >= 100_000
+      end
     end
   end
 end
