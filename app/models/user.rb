@@ -26,7 +26,11 @@ class User < ApplicationRecord
   end
 
   def valid_for_badge?(monster, count)
-    index = {
+    !badge?(monster, count) && killed_amount(monster) >= count
+  end
+
+  def badge?(monster, count)
+    trophy_number = {
       0       => 1,
       100     => 2,
       1000    => 3,
@@ -34,10 +38,6 @@ class User < ApplicationRecord
       100_000 => 5
     }[count]
 
-    !badge?(monster, index) && killed_amount(monster) >= count
-  end
-
-  def badge?(monster, index)
-    badges.select {|b| b.name == "#{monster.name} killer #{index}" }.present?
+    badges.select {|b| b.name == "#{monster.name} killer #{trophy_number}" }.present?
   end
 end
