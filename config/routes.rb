@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :deaths
+  resources :collected_coins
 
   resources :killed_monsters do
     collection do
