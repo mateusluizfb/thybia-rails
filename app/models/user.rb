@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :deaths
   has_many :collected_coins
+  has_many :killed_monsters
 
   def killed_amount(monster:)
     KilledMonster
