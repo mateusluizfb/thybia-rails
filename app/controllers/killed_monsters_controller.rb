@@ -3,12 +3,9 @@ class KilledMonstersController < ApplicationController
   before_action :set_monster
 
   def kill
-    killed_monsters = []
-
-    params[:count].to_i.times do
-      killed_monsters << KilledMonster.new(user: current_user, monster: @monster)
+    killed_monsters = Array.new(params[:count].to_i) do
+      KilledMonster.new(user: current_user, monster: @monster)
     end
-
     KilledMonster.import killed_monsters
 
     current_user.grant_monster_badge(@monster)
