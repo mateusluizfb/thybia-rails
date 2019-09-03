@@ -9,9 +9,16 @@ class Monster < ApplicationRecord
 
       Merit::Badge.create!(
         id:          count,
+        multiple:    false,
         name:        "#{name} killer #{trophy_index}",
         description: "Level #{trophy_index} monster killer"
       )
     end
+  end
+
+  def badge(level)
+    Merit::Badge
+      .select {|b| b.name == "#{name} killer #{level}" }
+      .first
   end
 end

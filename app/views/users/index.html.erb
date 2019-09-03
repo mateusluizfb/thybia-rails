@@ -50,7 +50,7 @@
         <% @monsters.each do |monster| %>
           <tr>
             <td> <%= monster.name %> </td>
-            <td> <%= current_user.killed_amount(monster: monster) %> </td>
+            <td> <%= current_user.killed_amount(monster) %> </td>
             <td>
               <%= form_tag "/killed_monsters/kill/#{monster.id}", method: :post do %>
                 <%= text_field_tag 'count', nil, placeholder: 'Quantidade'%>

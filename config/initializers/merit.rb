@@ -21,90 +21,115 @@ end
 
 Merit::Badge.create!(
   id: 1,
+  multiple: false,
   name: "Monster killer 1",
   description: "Level 1 monster killer"
 )
 
 Merit::Badge.create!(
   id: 2,
+  multiple: false,
   name: "Monster killer 2",
   description: "Level 2 monster killer"
 )
 
 Merit::Badge.create!(
   id: 3,
+  multiple: false,
   name: "Monster killer 3",
   description: "Level 3 monster killer"
 )
 
 Merit::Badge.create!(
   id: 4,
+  multiple: false,
   name: "Monster killer 4",
   description: "Level 4 monster killer"
 )
 
 Merit::Badge.create!(
   id: 5,
+  multiple: false,
   name: "Monster killer 5",
   description: "Level 5 monster killer"
 )
 
 Merit::Badge.create!(
   id: 6,
+  multiple: false,
   name: "Deaths 1",
   description: "Level 1 deaths"
 )
 
 Merit::Badge.create!(
   id: 7,
+  multiple: false,
   name: "Deaths 2",
   description: "Level 2 deaths"
 )
 
 Merit::Badge.create!(
   id: 8,
+  multiple: false,
   name: "Deaths 3",
   description: "Level 3 deaths"
 )
 
 Merit::Badge.create!(
   id: 9,
+  multiple: false,
   name: "Deaths 4",
   description: "Level 4 deaths"
 )
 
 Merit::Badge.create!(
   id: 10,
+  multiple: false,
   name: "Deaths 5",
   description: "Level 5 deaths"
 )
 
 Merit::Badge.create!(
   id: 11,
+  multiple: false,
   name: "Coins 1",
   description: "Level 1 coins"
 )
 
 Merit::Badge.create!(
   id: 12,
+  multiple: false,
   name: "Coins 2",
   description: "Level 2 coins"
 )
 
 Merit::Badge.create!(
   id: 13,
+  multiple: false,
   name: "Coins 3",
   description: "Level 3 coins"
 )
 
 Merit::Badge.create!(
   id: 14,
+  multiple: false,
   name: "Coins 4",
   description: "Level 4 coins"
 )
 
 Merit::Badge.create!(
   id: 15,
+  multiple: false,
   name: "Coins 5",
   description: "Level 5 coins"
 )
+
+def create_monster_trophies
+  if ActiveRecord::Base.connection.table_exists? 'monsters'
+    Monster.all.each(&:create_monster_trophy)
+  end
+rescue ActiveRecord::NoDatabaseError
+  return
+end
+
+create_monster_trophies

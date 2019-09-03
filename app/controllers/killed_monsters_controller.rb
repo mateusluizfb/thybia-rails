@@ -7,6 +7,7 @@ class KilledMonstersController < ApplicationController
       @killed_monster = KilledMonster.create(user: current_user, monster: @monster)
     end
 
+    current_user.grant_monster_badge(@killed_monster.monster)
     redirect_to users_path
   end
 
