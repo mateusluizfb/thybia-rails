@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :deaths
   resources :collected_coins
+  resources :users
 
   resources :killed_monsters do
     collection do
