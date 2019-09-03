@@ -4,6 +4,8 @@ class KilledMonstersController < ApplicationController
 
   def kill
     @killed_monster = KilledMonster.create(user: current_user, monster: @monster)
+
+    redirect_to users_path
   end
 
   private

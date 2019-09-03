@@ -52,7 +52,7 @@
             <td> <%= monster.name %> </td>
             <td> <%= current_user.killed_amount(monster: monster) %> </td>
             <td>
-              <%= form_tag '/killed_monsters', method: :post do %>
+              <%= form_tag "/killed_monsters/kill/#{monster.id}", method: :post do %>
                 <%= text_field_tag 'value', nil, placeholder: 'Quantidade'%>
                 <%= submit_tag 'Matar monstro' %>
               <% end %>
