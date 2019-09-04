@@ -9,7 +9,6 @@ class KilledMonstersController < ApplicationController
     KilledMonster.import killed_monsters
 
     current_user.grant_monster_badge(@monster)
-    @killed_monster = killed_monsters.first
     redirect_to users_path
   end
 
