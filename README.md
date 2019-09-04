@@ -12,3 +12,5 @@ Before start, create an `.env` file in the root and make sure to set those envir
   DB_HOST=''
   DEVISE_SECRET=''
 ```
+
+Also, don't forget to run `rails db:seed` besides the `rails db:create && rails db:migrate`
