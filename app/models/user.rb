@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :collected_coins
   has_many :killed_monsters
 
-  enum trophy_tier: {
+  enum trophy_count_tier: {
     0       => 1,
     100     => 2,
     1000    => 3,
@@ -25,17 +25,18 @@ class User < ApplicationRecord
       .count
   end
 
+  def badge?(monster, count)
+    tier = User.trophy_count_tiers[count]
+    badges.select {|b| b.name == "#{monster.name} killer #{tier}" }.present?
+  end
+
   def valid_for_badge?(monster, count)
     !badge?(monster, count) && killed_amount(monster) >= count
   end
 
-  def badge?(monster, count)
-    badges.select {|b| b.name == "#{monster.name} killer #{User.trophy_tiers[count]}" }.present?
-  end
-
   def grant_monster_badge(monster)
-    User.trophy_tiers.each do |index, value|
-      add_badge(monster.badge(value).id) if valid_for_badge?(monster, index)
+    User.trophy_count_tiers.each do |count, tier|
+      add_badge(monster.badge(tier).id) if valid_for_badge?(monster, count)
     end
   end
 end
