@@ -1,8 +1,8 @@
 class Monster < ApplicationRecord
   include Merit::BadgeRulesMethods
-  after_create :create_monster_trophy
+  after_create :create_monster_trophies
 
-  def create_monster_trophy
+  def create_monster_trophies
     5.times do |i|
       trophy_index = i + 1
       count = Merit::Badge.count + 1

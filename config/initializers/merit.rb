@@ -91,7 +91,7 @@ Merit::Badge.create!(
 
 def create_monster_trophies
   if ActiveRecord::Base.connection.table_exists? 'monsters'
-    Monster.all.each(&:create_monster_trophy)
+    Monster.all.each(&:create_monster_trophies)
   end
 rescue ActiveRecord::NoDatabaseError
   return
