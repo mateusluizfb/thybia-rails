@@ -2,9 +2,7 @@ class DeathsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    deaths = params[:count].to_i.times.map { Death.new(user: current_user) }
-    Death.import deaths
-
+    deaths = Death.create_multiple(params[:count].to_i, current_user)
     @death = deaths.last
     redirect_to users_path
   end
